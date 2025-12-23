@@ -1,0 +1,430 @@
+/* style.css */
+:root {
+    --primary-color: #ff758c;
+    --secondary-color: #ff7eb3;
+    --bg-color: #fff0f3;
+    --text-color: #4a4a4a;
+    --white: #ffffff;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(135deg, var(--bg-color), #ffe6e9);
+    color: var(--text-color);
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1, h2 {
+    font-family: 'Dancing Script', cursive;
+    color: var(--primary-color);
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(255, 117, 140, 0.2);
+    max-width: 800px;
+    width: 90%;
+    z-index: 10;
+    position: relative;
+    backdrop-filter: blur(5px);
+}
+
+/* Botones bonitos */
+.btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 30px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(255, 117, 140, 0.4);
+}
+
+/* Estilos del Temporizador */
+.timer-box {
+    margin: 30px 0;
+    padding: 20px;
+    background: var(--white);
+    border-radius: 15px;
+    border: 2px dashed var(--primary-color);
+}
+
+#timer {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+/* Galería de Fotos estilo Polaroid */
+.gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.polaroid {
+    background: white;
+    padding: 10px 10px 40px 10px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+    transform: rotate(-3deg);
+    transition: transform 0.3s;
+    width: 200px;
+}
+
+.polaroid:hover {
+    transform: rotate(0deg) scale(1.1);
+    z-index: 20;
+}
+
+.polaroid img {
+    width: 100%;
+    height: auto;
+    border-radius: 2px;
+}
+
+.caption {
+    margin-top: 10px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.2rem;
+    color: #555;
+}
+
+/* Carta */
+.letter-content {
+    text-align: left;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+/* Animaciones */
+.fade-in {
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Lluvia de Corazones */
+.heart {
+    position: fixed;
+    top: -10vh;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    animation: fall linear forwards;
+    z-index: 1;
+}
+
+@keyframes fall {
+    to { transform: translateY(110vh); }
+}
+
+.date-title {
+    font-family: 'Dancing Script', cursive; /* La misma fuente bonita del título */
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 5px;
+    margin-top: 0;
+}
+
+/* Ajuste para que la galería sea más ancha que la página principal */
+.gallery-container {
+    max-width: 1000px; /* Más ancho para las fotos */
+    margin: 20px auto;
+}
+
+.gallery-grid {
+    display: grid;
+    /* Esto crea columnas automáticas que se ajustan al tamaño de la pantalla */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+    padding: 20px;
+    justify-items: center;
+}
+
+.polaroid {
+    background: white;
+    padding: 10px 10px 30px 10px; /* Espacio para el texto abajo */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+    width: 200px;
+    border: 1px solid #eee;
+}
+
+.polaroid img {
+    width: 100%;
+    height: 200px; /* Altura fija para que todas se vean iguales */
+    object-fit: cover; /* Ajusta la foto sin deformarla */
+    border-radius: 2px;
+}
+
+/* Estilo especial para la foto del 19 de Abril */
+.special-date {
+    border: 3px solid #ff4d6d !important;
+    transform: rotate(0deg) scale(1.05) !important;
+    z-index: 5;
+    box-shadow: 0 10px 30px rgba(255, 77, 109, 0.4) !important;
+}
+
+.special-date .ribbon {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #ff4d6d;
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 5px;
+    transform: rotate(15deg);
+}
+
+/* Estilo para el video */
+.video-box video {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Efecto Hover en fotos */
+.polaroid:hover {
+    transform: scale(1.1) rotate(0deg) !important;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Transición suave entre años */
+.active-year {
+    display: block;
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- ADAPTACIÓN PARA MÓVILES --- */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2.2rem; /* Título un poco más pequeño para que no se corte */
+    }
+
+    .container {
+        width: 95%;
+        padding: 1.2rem;
+    }
+
+    /* En móviles, las fotos ocuparán más espacio para que se vean bien */
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 15px;
+        padding: 5px;
+    }
+
+    .polaroid {
+        width: 140px; /* Tamaño ideal para que quepan dos por fila en muchos móviles */
+        padding: 8px 8px 25px 8px;
+    }
+
+    .polaroid img, .video-box video {
+        height: 140px; /* Fotos cuadradas en el celular */
+    }
+
+    .date-title {
+        font-size: 1.5rem;
+    }
+
+    #timer {
+        font-size: 1.1rem;
+    }
+
+    .btn {
+        width: 80%; /* Botones más fáciles de tocar con el dedo */
+        margin: 5px auto;
+    }
+}
+
+/* --- NUEVO ESTILO PARA LOS MESES (ACORDEONES) --- */
+details {
+    background: rgba(255, 255, 255, 0.6);
+    margin-bottom: 15px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 117, 140, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+details[open] {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 10px 25px rgba(255, 117, 140, 0.15);
+    transform: translateY(-2px);
+}
+
+summary {
+    padding: 18px 25px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ff4d6d;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s;
+}
+
+/* Flecha personalizada */
+summary::after {
+    content: '▼';
+    font-size: 0.8rem;
+    transition: transform 0.3s;
+    color: var(--primary-color);
+}
+
+details[open] summary::after {
+    transform: rotate(180deg);
+}
+
+summary:hover {
+    background: rgba(255, 117, 140, 0.1);
+}
+
+/* El texto dentro de los meses */
+summary::before {
+    content: "💖";
+    margin-right: 12px;
+    filter: drop-shadow(0 0 5px rgba(255,117,140,0.5));
+}
+
+/* Animación de las fotos al abrir el mes */
+details[open] .gallery-grid {
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Estilo para los años (botones superiores) */
+.timeline-nav {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    border-radius: 50px;
+    display: inline-flex;
+    margin-bottom: 30px;
+    border: 1px solid white;
+}
+
+.year-btn {
+    border: none;
+    background: transparent;
+    padding: 12px 35px;
+    font-size: 1.1rem;
+    border-radius: 40px;
+    transition: all 0.3s;
+}
+
+.year-btn.active {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 5px 15px rgba(255, 117, 140, 0.4);
+}
+
+.year-section {
+    display: none; /* Esto hace que el año 2025 esté oculto al principio */
+}
+
+.year-section.active-year {
+    display: block; /* Esto muestra el año cuando haces clic */
+}
+
+.btn {
+    background: linear-gradient(45deg, #ff4d6d, #ff758c);
+    color: white !important; /* El !important evita que se ponga azul */
+    padding: 15px 35px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none !important; /* Quita el subrayado azul */
+    border-radius: 50px;
+    display: inline-block;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
+    cursor: pointer;
+    text-align: center;
+    min-width: 200px;
+}
+
+/* Interacción al pasar el ratón o tocar */
+.btn:hover {
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 77, 109, 0.5);
+    background: linear-gradient(45deg, #ff758c, #ff4d6d);
+    color: white !important;
+}
+
+/* Interacción al hacer clic */
+.btn:active {
+    transform: scale(0.98);
+}
+
+@media (max-width: 600px) {
+    .btn {
+        width: 80%; /* Para que en el móvil sean grandes y fáciles de pulsar */
+    }
+}
+
+/* Estilo de la foto final */
+.final-photo {
+    max-width: 90%;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(255, 117, 140, 0.4);
+    border: 6px solid white; /* Efecto marco de foto */
+    transform: rotate(-2deg); /* Ligera inclinación romántica */
+}
+
+/* Animación de aparición suave */
+.fade-in-photo {
+    animation: fadeInSoft 2s forwards;
+}
+
+@keyframes fadeInSoft {
+    from {
+        opacity: 0;
+        transform: translateY(20px) rotate(-2deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) rotate(-2deg);
+    }
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Carta Para Ti</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@300;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <audio id="bg-music" loop>
+        <source src="../img/Manuel%20Medrano%20-%20Una%20y%20Otra%20Vez%20(Audio%20Oficial).mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="music-control" onclick="toggleMusic()" style="position: fixed; top: 20px; right: 20px; z-index: 1000; cursor: pointer; font-size: 24px; background: rgba(255,255,255,0.5); border-radius: 50%; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+    🎵
+    </div>
+
+    <button id="skip-btn" onclick="skipTypewriter()" style="background: rgba(255,117,140,0.2); border: 1px solid #ff758c; color: #ff758c; padding: 5px 15px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; margin-bottom: 15px;">
+    Saltar animación ⚡
+    </button>
+
+    <div class="container">
+        <h1 class="fade-in">Lo que siento por ti 💌</h1>
+
+        <div class="letter-content" id="typewriter-text">
+            </div>
+
+        <br>
+
+        <div id="final-photo-container" style="display: none; text-align: center; margin-top: 30px;">
+            <img src="../img/imagen_final.jpg" alt="Nosotros" class="final-photo">
+            <p style="font-family: 'Dancing Script', cursive; font-size: 1.8rem; color: #ff758c; margin-top: 15px;">Por siempre juntos...</p>
+            <br>
+            <a href="../index.html" class="btn">Volver al Inicio 🏠</a>
+        </div>
+    </div>
+
+    <script src="../js/script.js"></script>
+    <script>
+        // Código específico para la carta (efecto máquina de escribir)
+        const text = "Hola, mi amor: \n\nQuería sorprenderte con esta página web para recordarte lo mucho que te amo, así que... quería volver a repetirte lo que siento por ti, mi princesa. \n\nSiempre estaré agradecido de haber iniciado esa conversación contigo, porque desde ese momento mi vida ha ido mucho mejor a tu lado; todo tiene más color. No sabría explicarte todo lo que siento por ti, ya que mi amor es inmensamente enorme, de aquí hasta donde no te puedas imaginar, jijiji. Eres mi persona favorita en el mundo y cada día a tu lado SIEMPRE es un regalo.\n\n Me alegra saber que tengo a una persona maravillosa conmigo, que me ama con esa intensidad, me protege, me cuida, me ayuda y, sobre todo, me ama tal y como soy. Porque si muchas parejas duran casi toda la vida, es gracias a que se aceptan tal y como son. Con sus defectos y virtudes, porque son precisamente esas pequeñas cosas las que te hacen única. No cambiaría absolutamente nada de ti, porque cada detalle tuyo es lo que me enamoró aquel 19 de abril del 2024 y lo que me sigue conquistando cada mañana. Por eso, quiero pasar el resto de mi vida junto a ti; eso obviamente incluye tener nuestra propia casa, casarnos :) y, lo más tierno, tener un niño y una niña muy lindos como sus padres. \n\nPero antes de que todo eso llegue, me emociona pensar en el ahora. Estamos por cerrar un año que ha sido increíble gracias a ti, y no sé qué me depara el nuevo año que está por comenzar, pero deseo que me permita seguir estando contigo. Quiero que cada día del 2026 tenga tu nombre escrito.\n\nGracias por ser tú misma.\n\nTe amo con el alma, mi amor❤️.";
+        const container = document.getElementById("typewriter-text");
+        let i = 0;
+        let isSkipped = false; // Nueva variable de control
+
+        function typeWriter() {
+            if (isSkipped) return; // Si se saltó, detenemos la función
+
+            if (i < text.length) {
+                if(text.charAt(i) === '\n') {
+                    container.innerHTML += '<br>';
+                } else {
+                    container.innerHTML += text.charAt(i);
+                }
+                i++;
+                setTimeout(typeWriter, 45);
+            } else {
+                showFinalElements();
+            }
+        }
+
+// NUEVA FUNCIÓN: Saltar animación
+function skipTypewriter() {
+    isSkipped = true; // Detiene el bucle de setTimeout
+    // Reemplaza los saltos de línea por <br> para mostrarlo todo bien
+    container.innerHTML = text.replace(/\n/g, '<br>');
+    showFinalElements();
+    // Ocultamos el botón de saltar ya que no se necesita
+    document.getElementById("skip-btn").style.display = "none";
+}
+
+// Función auxiliar para mostrar la foto y el botón final
+function showFinalElements() {
+    const photoContainer = document.getElementById("final-photo-container");
+    photoContainer.style.display = "block";
+    photoContainer.classList.add("fade-in-photo");
+    document.getElementById("skip-btn").style.display = "none";
+
+    // Scroll suave al final
+    setTimeout(() => {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }, 300);
+}
+
+window.onload = typeWriter;
+
+    </script>
+</body>
+</html>
